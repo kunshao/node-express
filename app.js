@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 //Set up default mongoose connection
-var mongoDB = 'localhost:27017';
+var mongoDB = 'mongodb://localhost:27017/tutorial';
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
