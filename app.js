@@ -12,6 +12,8 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 
 var app = express();
 
+console.log(process.env['test']);
+
 //Set up default mongoose connection
 var mongoDB = 'mongodb://localhost:27017/tutorial';
 mongoose.connect(mongoDB);
