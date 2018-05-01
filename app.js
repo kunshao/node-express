@@ -12,7 +12,6 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 
 var app = express();
 
-
 console.log("Starting app...");
 console.log(process.env.test);
 
