@@ -13,10 +13,9 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 var app = express();
 
 console.log("Starting app...");
-console.log(process.env.test);
 
 //Set up default mongoose connection
-var mongoDB = 'mongodb://localhost:27017/tutorial';
+var mongoDB = process.env.ENV == "production" ? "mongodb://mongotutorial:p8wT5Hz2qCoIImQCAYGfgg6dKexJFgdINi6OC50gKYUHmB8Je5rvqcHArHI8gEnqEeGUVC6AAeExU34Nx06WyQ==@mongotutorial.documents.azure.com:10255/?ssl=true&replicaSet=globaldb?" : 'mongodb://localhost:27017/tutorial';
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
