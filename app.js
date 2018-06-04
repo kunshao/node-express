@@ -15,7 +15,7 @@ var app = express();
 console.log("Starting app...");
 
 //Set up default mongoose connection
-var mongoDB = process.env.ENV == "production" ? "mongodb://mongotutorial:p8wT5Hz2qCoIImQCAYGfgg6dKexJFgdINi6OC50gKYUHmB8Je5rvqcHArHI8gEnqEeGUVC6AAeExU34Nx06WyQ==@mongotutorial.documents.azure.com:10255/?ssl=true&replicaSet=globaldb?" : 'mongodb://localhost:27017/tutorial';
+var mongoDB = process.env.ENV == "production" ? "mongodb://mongotutorial:p8wT5Hz2qCoIImQCAYGfgg6dKexJFgdINi6OC50gKYUHmB8Je5rvqcHArHI8gEnqEeGUVC6AAeExU34Nx06WyQ==@mongotutorial.documents.azure.com:10255/tutorial?ssl=true&replicaSet=globaldb?" : 'mongodb://localhost:27017/tutorial';
 mongoose.connect(mongoDB);
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
@@ -24,7 +24,9 @@ var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-
+db.once('open', function(){
+  console.log("Connected to DB");
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
